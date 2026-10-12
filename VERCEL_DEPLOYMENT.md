@@ -1,16 +1,16 @@
 ﻿# Deploy the user frontend to Vercel
 
-This repository contains several projects. Create the Vercel project from the `frontend` directory to deploy the React/Vite user portal.
+This repository contains several projects. The repository root now has a Vercel configuration that builds and serves the React/Vite user portal from `frontend`, so it can be imported with the default root directory.
 
 ## Vercel project settings
 
-- Framework preset: Vite
-- Root directory: `frontend`
-- Build command: `npm run build`
-- Output directory: `dist`
-- Install command: `npm install`
+Recommended: use the repository root with the Vercel configuration committed here. Vercel uses:
 
-`frontend/vercel.json` includes the SPA fallback so direct visits to routes such as `/doctors` continue to work.
+- Install command: `npm install --prefix frontend`
+- Build command: `npm run build --prefix frontend`
+- Output directory: `frontend/dist`
+
+Alternatively, set the Vercel project root directory to `frontend` and use the Vite defaults (`npm install`, `npm run build`, output `dist`). `frontend/vercel.json` includes the SPA fallback so direct visits to routes such as `/doctors` continue to work.
 
 ## Environment variables
 
@@ -26,7 +26,7 @@ Do not add real credentials or `.env` files to Git. The repository ignores them;
 ## Deploy
 
 1. Import `https://github.com/vedhanthgoud805-cyber/tt_project` in Vercel.
-2. Set the project root to `frontend` and enter the environment variables above.
-3. Deploy. Later pushes to the connected Git branch will trigger new deployments.
+2. Keep the root directory set to the repository root, or use `frontend` with the alternative settings above.
+3. Enter the environment variables above and deploy. Later pushes to the connected Git branch will trigger new deployments.
 
 For local development, run `npm install` and `npm run dev` from `frontend`, then open `http://localhost:5173`.
